@@ -141,8 +141,7 @@ def get_top_pools_message(
     pool_messages = [format_pool_message(pool, i + 1) for i, pool in enumerate(filtered_pools)]
     
     footer = (
-        f"\n━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📡 Nguồn: DeFiLlama"
+        f"\n━━━━━━━━━━━━━━━━━━━━━━"
     )
     
     return header + "\n\n".join(pool_messages) + footer
@@ -151,5 +150,6 @@ def get_top_pools_message(
 if __name__ == "__main__":
     # Test the module
     print(get_top_pools_message(min_tvl_millions=5, min_apr=12, top_n=5))
+
 
 
