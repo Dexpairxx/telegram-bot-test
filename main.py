@@ -46,7 +46,7 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         "Bot này sẽ gửi thông báo hàng ngày lúc 9h sáng về top stablecoin pools.\n\n"
         "Các lệnh:\n"
         "- /TopTVL <số lượng> <TVL triệu $> <APR %>\n"
-        "Ví dụ: /TopTVL 25 2 15 → Top 25 pools, TVL > $2M, APR > 15%\n\n"
+        "Ví dụ: /TopTVL 25 2 15 => Top 25 pools, TVL > $2M, APR > 15%\n\n"
         "- /help - Xem hướng dẫn\n"
     )
     await update.message.reply_text(welcome_message)
@@ -64,9 +64,9 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
         "- TVL: TVL tối thiểu (triệu USD, mặc định: 5)\n"
         "- APR: APR tối thiểu (%, mặc định: 12)\n\n"
         "Ví dụ:\n"
-        "/TopTVL 25 2 15 → Top 25, TVL > $2M, APR > 15%\n"
-        "/TopTVL 10 → Top 10, TVL > $5M, APR > 12%\n"
-        "/TopTVL → Top 20, TVL > $5M, APR > 12%\n\n"
+        "/TopTVL 25 2 15 => Top 25, TVL > $2M, APR > 15%\n"
+        "/TopTVL 10 => Top 10, TVL > $5M, APR > 12%\n"
+        "/TopTVL => Top 20, TVL > $5M, APR > 12%\n\n"
         "━━━━━━━━━━━━━━━━━━━━━━"
     )
     await update.message.reply_text(help_message)
@@ -198,6 +198,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 
 
