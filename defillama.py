@@ -134,7 +134,7 @@ def get_top_pools_message(
     header = (
         f"🔥 TOP {len(filtered_pools)} STABLECOIN YIELD POOLS\n"
         f"━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📌 Điều kiện: APR > {min_apr}% | TVL > ${min_tvl_millions}M\n"
+        f"Điều kiện: APR > {min_apr}% | TVL > ${min_tvl_millions}M\n"
         f"━━━━━━━━━━━━━━━━━━━━━━\n\n"
     )
     
@@ -142,8 +142,7 @@ def get_top_pools_message(
     
     footer = (
         f"\n━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📡 Nguồn: DeFiLlama\n"
-        f"⏰ Cập nhật: Realtime"
+        f"📡 Nguồn: DeFiLlama"
     )
     
     return header + "\n\n".join(pool_messages) + footer
@@ -152,3 +151,4 @@ def get_top_pools_message(
 if __name__ == "__main__":
     # Test the module
     print(get_top_pools_message(min_tvl_millions=5, min_apr=12, top_n=5))
+
