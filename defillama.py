@@ -51,10 +51,10 @@ def filter_pools(
     for pool in pools:
         tvl = pool.get("tvlUsd") or 0
         apy = (
-                pool.get("apyMean30d")
-                or pool.get("apyReward")
+                pool.get("apy")
                 or pool.get("apyBase")
-                or pool.get("apy")
+                or pool.get("apyReward")
+                or pool.get("apyMean30d")
                 or 0
             )
 
@@ -151,4 +151,5 @@ def get_top_pools_message(
 if __name__ == "__main__":
     # Test the module
     print(get_top_pools_message(min_tvl_millions=5, min_apr=12, top_n=5))
+
 
