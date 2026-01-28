@@ -42,14 +42,12 @@ VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
 async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /start command."""
     welcome_message = (
-        "👋 Chào mừng bạn đến với DeFiLlama Stablecoin Yield Bot!\n\n"
-        "🔔 Bot này sẽ gửi thông báo hàng ngày lúc 9h sáng về top stablecoin pools.\n\n"
-        "📝 Các lệnh:\n"
-        "• /TopTVL <số lượng> <TVL triệu $> <APR %>\n"
-        "  Ví dụ: /TopTVL 25 2 15 → Top 25 pools, TVL > $2M, APR > 15%\n\n"
-        "• /help - Xem hướng dẫn\n\n"
-        f"💬 Chat ID của bạn: {update.effective_chat.id}\n"
-        "(Cần thiết cho scheduled notifications)"
+        "Chào mừng bạn đến với DeFiLlama Stablecoin Yield Bot!\n\n"
+        "Bot này sẽ gửi thông báo hàng ngày lúc 9h sáng về top stablecoin pools.\n\n"
+        "Các lệnh:\n"
+        "- /TopTVL <số lượng> <TVL triệu $> <APR %>\n"
+        "Ví dụ: /TopTVL 25 2 15 → Top 25 pools, TVL > $2M, APR > 15%\n\n"
+        "- /help - Xem hướng dẫn\n"
     )
     await update.message.reply_text(welcome_message)
 
@@ -57,20 +55,19 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /help command."""
     help_message = (
-        "📖 HƯỚNG DẪN SỬ DỤNG\n"
+        "HƯỚNG DẪN SỬ DỤNG\n"
         "━━━━━━━━━━━━━━━━━━━━━━\n\n"
-        "🔸 /TopTVL <số lượng> <TVL> <APR>\n"
-        "   Tra cứu top stablecoin pools theo điều kiện\n\n"
-        "   Tham số:\n"
-        "   • Số lượng: Số pools muốn xem (mặc định: 20)\n"
-        "   • TVL: TVL tối thiểu (triệu USD, mặc định: 5)\n"
-        "   • APR: APR tối thiểu (%, mặc định: 12)\n\n"
-        "   Ví dụ:\n"
-        "   /TopTVL 25 2 15 → Top 25, TVL > $2M, APR > 15%\n"
-        "   /TopTVL 10 → Top 10, TVL > $5M, APR > 12%\n"
-        "   /TopTVL → Top 20, TVL > $5M, APR > 12%\n\n"
-        "━━━━━━━━━━━━━━━━━━━━━━\n"
-        "📡 Dữ liệu từ DeFiLlama"
+        "/TopTVL <số lượng> <TVL> <APR>\n"
+        "Tra cứu top stablecoin pools theo điều kiện\n\n"
+        "Tham số:\n"
+        "- Số lượng: Số pools muốn xem (mặc định: 20)\n"
+        "- TVL: TVL tối thiểu (triệu USD, mặc định: 5)\n"
+        "- APR: APR tối thiểu (%, mặc định: 12)\n\n"
+        "Ví dụ:\n"
+        "/TopTVL 25 2 15 → Top 25, TVL > $2M, APR > 15%\n"
+        "/TopTVL 10 → Top 10, TVL > $5M, APR > 12%\n"
+        "/TopTVL → Top 20, TVL > $5M, APR > 12%\n\n"
+        "━━━━━━━━━━━━━━━━━━━━━━"
     )
     await update.message.reply_text(help_message)
 
@@ -201,6 +198,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 
 
