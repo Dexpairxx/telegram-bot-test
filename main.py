@@ -136,7 +136,7 @@ async def send_daily_notification(context: ContextTypes.DEFAULT_TYPE) -> None:
     message = get_top_pools_message(
         min_tvl_millions=5.0,
         min_apr=12.0,
-        top_n=15
+        top_n=10
     )
     
     try:
@@ -196,6 +196,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 
 
