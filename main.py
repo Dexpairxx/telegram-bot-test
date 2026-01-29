@@ -31,9 +31,7 @@ logger = logging.getLogger(__name__)
 # Bot token - can be overridden by environment variable
 BOT_TOKEN = os.getenv("BOT_TOKEN", "8305431317:AAFr-wfK8d2dKvXqXmSGvPJG4Q6vabD6bM8")
 
-# Chat ID for scheduled notifications (set this after getting your chat ID)
-# You can get your chat ID by messaging @userinfobot on Telegram
-CHAT_ID = os.getenv("CHAT_ID", "5369646620")
+CHAT_ID = os.getenv("CHAT_ID", "1003825912363")
 
 # Vietnam timezone
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
@@ -162,7 +160,7 @@ async def post_init(application: Application) -> None:
     
     # Schedule daily job at 9:00 AM Vietnam time
     job_queue = application.job_queue
-    target_time = time(hour=9, minute=0, second=0, tzinfo=VIETNAM_TZ)
+    target_time = time(hour=10, minute=0, second=0, tzinfo=VIETNAM_TZ)
     
     job_queue.run_daily(
         send_daily_notification,
@@ -198,6 +196,7 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
 
 
 
