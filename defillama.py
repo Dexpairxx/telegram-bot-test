@@ -274,6 +274,3 @@ def get_top_pools_message(
 if __name__ == "__main__":
     # Test the module
     print(get_top_pools_message(min_tvl_millions=5, min_apr=12, top_n=5))
-
-
-
