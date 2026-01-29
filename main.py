@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 # Bot token - can be overridden by environment variable
 BOT_TOKEN = os.getenv("BOT_TOKEN", "8305431317:AAFr-wfK8d2dKvXqXmSGvPJG4Q6vabD6bM8")
 
-CHAT_ID = os.getenv("CHAT_ID", "1003825912363")
+CHAT_ID = os.getenv("CHAT_ID", "-1003825912363")
 
 # Vietnam timezone
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
@@ -88,7 +88,7 @@ async def top_tvl_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
             min_apr = float(args[2])
     except ValueError:
         await update.message.reply_text(
-            "❌ Tham số không hợp lệ!\n\n"
+            "Tham số không hợp lệ!\n\n"
             "Cú pháp: /TopTVL <số lượng> <TVL triệu $> <APR %>\n"
             "Ví dụ: /TopTVL 25 2 15"
         )
@@ -96,13 +96,13 @@ async def top_tvl_command(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     
     # Validate parameters
     if top_n < 1 or top_n > 100:
-        await update.message.reply_text("❌ Số lượng phải từ 1 đến 100")
+        await update.message.reply_text("Số lượng phải từ 1 đến 100")
         return
     if min_tvl < 0:
-        await update.message.reply_text("❌ TVL phải là số dương")
+        await update.message.reply_text("TVL phải là số dương")
         return
     if min_apr < 0:
-        await update.message.reply_text("❌ APR phải là số dương")
+        await update.message.reply_text("APR phải là số dương")
         return
     
     # Send "typing" action
@@ -136,7 +136,7 @@ async def send_daily_notification(context: ContextTypes.DEFAULT_TYPE) -> None:
     message = get_top_pools_message(
         min_tvl_millions=5.0,
         min_apr=12.0,
-        top_n=20
+        top_n=10
     )
     
     try:
@@ -160,7 +160,7 @@ async def post_init(application: Application) -> None:
     
     # Schedule daily job at 9:00 AM Vietnam time
     job_queue = application.job_queue
-    target_time = time(hour=10, minute=0, second=0, tzinfo=VIETNAM_TZ)
+    target_time = time(hour=18, minute=10, second=0, tzinfo=VIETNAM_TZ)
     
     job_queue.run_daily(
         send_daily_notification,
