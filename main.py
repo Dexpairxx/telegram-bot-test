@@ -161,7 +161,7 @@ async def post_init(application: Application) -> None:
     
     # Schedule daily job at 9:00 AM Vietnam time
     job_queue = application.job_queue
-    target_time = time(hour=9, minute=10, second=0, tzinfo=VIETNAM_TZ)
+    target_time = time(hour=9, minute=0, second=0, tzinfo=VIETNAM_TZ)
     
     job_queue.run_daily(
         send_daily_notification,
