@@ -114,9 +114,7 @@ def fetch_stablecoin_pools() -> List[Dict[str, Any]]:
     except Exception as e:
         print(f"Error fetching pools: {e}")
         return []
-
-
-
+        
 
 def filter_pools(
     pools: List[Dict[str, Any]],
@@ -141,14 +139,16 @@ def filter_pools(
     filtered = []
     for pool in pools:
         tvl = pool.get("tvlUsd") or 0
-        apy = (
-                pool.get("apy")
-                or pool.get("apyBase")
-                or pool.get("apyReward")
-                or pool.get("apyMean30d")
-                or 0
-            )
-
+        # Calculate APY: prefer 'apy' field, fallback to sum of base + reward
+        apy = pool.get("apy")
+        if apy is None or apy == 0:
+            # Use sum of apyBase and apyReward as fallback
+            apy_base = pool.get("apyBase") or 0
+            apy_reward = pool.get("apyReward") or 0
+            apy = apy_base + apy_reward
+        
+        # Store calculated APY in pool for consistent display
+        pool["calculated_apy"] = apy
         
         if tvl >= min_tvl and apy >= min_apr:
             filtered.append(pool)
@@ -164,7 +164,7 @@ def format_pool_message(pool: Dict[str, Any], rank: int) -> str:
     symbol = pool.get("symbol", "N/A")
     project = pool.get("project", "N/A")
     chain = pool.get("chain", "N/A")
-    apy = pool.get("apy") or 0
+    apy = pool.get("calculated_apy") or pool.get("apy") or 0
     apy_base = pool.get("apyBase") or 0
     apy_reward = pool.get("apyReward") or 0
     tvl = pool.get("tvlUsd", 0)
