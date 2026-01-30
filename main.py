@@ -32,6 +32,7 @@ logger = logging.getLogger(__name__)
 BOT_TOKEN = os.getenv("BOT_TOKEN", "8305431317:AAFr-wfK8d2dKvXqXmSGvPJG4Q6vabD6bM8")
 
 CHAT_ID = os.getenv("CHAT_ID", "-1003825912363")
+# CHAT_ID = os.getenv("CHAT_ID", "5369646620")
 
 # Vietnam timezone
 VIETNAM_TZ = pytz.timezone("Asia/Ho_Chi_Minh")
@@ -160,7 +161,7 @@ async def post_init(application: Application) -> None:
     
     # Schedule daily job at 9:00 AM Vietnam time
     job_queue = application.job_queue
-    target_time = time(hour=9, minute=0, second=0, tzinfo=VIETNAM_TZ)
+    target_time = time(hour=9, minute=10, second=0, tzinfo=VIETNAM_TZ)
     
     job_queue.run_daily(
         send_daily_notification,
@@ -187,7 +188,7 @@ def main() -> None:
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("TopTVL", top_tvl_command))
-    application.add_handler(CommandHandler("toptvl", top_tvl_command))  # Case-insensitive
+    application.add_handler(CommandHandler("toptvl", top_tvl_command))
     
     # Run the bot
     logger.info("Bot is running. Press Ctrl+C to stop.")
