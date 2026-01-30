@@ -165,6 +165,8 @@ def format_pool_message(pool: Dict[str, Any], rank: int) -> str:
     project = pool.get("project", "N/A")
     chain = pool.get("chain", "N/A")
     apy = pool.get("apy") or 0
+    apy_base = pool.get("apyBase") or 0
+    apy_reward = pool.get("apyReward") or 0
     tvl = pool.get("tvlUsd", 0)
     pool_meta = pool.get("poolMeta", "")
     pool_id = pool.get("pool", "")
@@ -211,6 +213,7 @@ def format_pool_message(pool: Dict[str, Any], rank: int) -> str:
         f"   📊 Project: {project}\n"
         f"   🔗 Chain: {chain}\n"
         f"   💰 APR: {apy:.2f}%\n"
+        f"   📈 APY structure: base: {apy_base:.2f}% + reward: {apy_reward:.2f}%\n"
         f"   🏦 TVL: {tvl_str}\n"
         f"   🏷️ Category: {category}\n"
         f"   🔒 Audit: {audit_str}\n"
